@@ -23,14 +23,23 @@ def make_ships(board):
     for ship in range(5):
         ship_row, ship_column = randint(0, 4), randint(0, 4)
         while board[ship_row][ship_column] == "X":
-            ship_row, ship_column = find_ship_location()
+            ship_row, ship_column = player_input()
         board[ship_row][ship_column] = "X"
 
 
-def find_ship_location():
+def player_input():
+    row = input("Please enter ship row 1-5:")
+    while row not in "12345":
+        print("Please enter valid row!")
+        row = input("Please enter ship row 1-5:")
+    column = input("Please enter ship column A-E:").upper()
+    while column not in "ABCDE":
+        print("Please enter valid column!")
+        column = input("Please enter ship column A-E:").upper()
+    return int(row) - 1, letters_to_numbers[column]
 
 
 def count_hits(board):
 
 
-def comp_turn    
+def computer_input()
