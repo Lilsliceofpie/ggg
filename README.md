@@ -4,6 +4,7 @@ Battleships is a game in which each player receives a game board and five ships.
 ## Rules
 The player and computer both start with 5 ships each, the player must input a row(1-5) and column(A-E) and try to destroy all of the computers ships. The player has 8 chances to guess, if they run out of chances or if the computer destroys all the players ships, its game over.
 
+![](assets/screenshots/Screenshot%20(42).png)
 
 ## Features
 
@@ -41,5 +42,5 @@ The player and computer both start with 5 ships each, the player must input a ro
 - This project was deployed using Code institutes mock terminal for Heroku.
 
 ## Credits
-- Some of the code in the make_ships(), player_input() and count_hits() functions was borrowed from this youtube video - 
-- Code Institute for the deployment terminal 
+- Some of the code in the make_ships(), player_input() and count_hits() functions was borrowed from this youtube video -https://youtu.be/tF1WRCrd_HQ
+- Code Institute for the deployment terminal .

@@ -37,14 +37,14 @@ def player_input():
     """
     Requests and validates input from player.
     """
-    row = input("Please input ship row 1-5: ")
+    row = input("Please input ship row 1-5: \n")
     while row not in "12345":
         print("Please input valid row!")
-        row = input("Please input ship row 1-5: ")
-    column = input("Please input ship column A-E: ").upper()
+        row = input("Please input ship row 1-5: \n")
+    column = input("Please input ship column A-E: \n").upper()
     while column not in "ABCDE":
         print("Please input valid column!")
-        column = input("Please input ship column A-E: ").upper()
+        column = input("Please input ship column A-E: \n").upper()
     return int(row) - 1, letters_to_numbers[column]
 
 
