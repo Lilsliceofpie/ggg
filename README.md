@@ -1,31 +1,45 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships
+Battleships is a game in which each player receives a game board and five ships. The objective of the game is to guess the location of the other players ships and sink them before they sink your ships. This is a simplified version in which the player playes against the computer and only has a limited amount of guesses.
 
-Welcome Lilsliceofpie,
+## Rules
+The player and computer both start with 5 ships each, the player must input a row(1-5) and column(A-E) and try to destroy all of the computers ships. The player has 8 chances to guess, if they run out of chances or if the computer destroys all the players ships, its game over.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
-## Reminders
+## Features
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+- __Random board generation__
 
-## Creating the Heroku app
+  - Ships are randomly placed on both the player and computers boards.
+  - The player cannot see the location of the computers ships.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+- __Accepts user input__
+- __Keeps track of turns taken__
+- __Input validation and error checking__
 
-1. `heroku/python`
-2. `heroku/nodejs`
+  - Will not allow user to input a row or column outside of the grid.
+  - The user must input a number for the row and a letter for the column selection. 
+  - The user cannot input the same guess twice.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Future features to implement
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- __Allow player to select board size__
+- __Allow player to place ships in location of their choice__
+- __Have different sized ships__
 
-Connect your GitHub repository and deploy as normal.
+## Testing
+- I tested that the site works in different browsers: chrome, Internet explorer, DuckDuckGo.
+- I put the code through PEP8 and confirmed that there are no errors
+- I tested it in my local terminal and the code institute Heroku terminal
 
-## Constraints
+## Bugs
+- Initially it would not accept lowercase letters as valid input from the user, i fixed this with the .upper() function.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Validator testing
+- PEP8: No errors were returned when passed through the validator.
 
------
-Happy coding!
+## Deployment
+- This project was deployed using Code institutes mock terminal for Heroku.
+
+## Credits
+- Some of the code in the make_ships(), player_input() and count_hits() functions was borrowed from this youtube video - 
+- Code Institute for the deployment terminal 

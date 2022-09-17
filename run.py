@@ -1,7 +1,7 @@
 from random import randint
 
 
-HIDDEN_BOARD = [[" "] * 5 for x in range(5)]
+COMP_BOARD = [[" "] * 5 for x in range(5)]
 PLAYER_BOARD = [[" "] * 5 for x in range(5)]
 GUESS_BOARD = [[" "] * 5 for x in range(5)]
 COMP_GUESS_BOARD = [[" "] * 5 for x in range(5)]
@@ -24,7 +24,7 @@ def print_board(board):
 
 def make_ships(board):
     """
-    Populates boards with ships.
+    Populates the boards with ships.
     """
     for ship in range(5):
         ship_row, ship_column = randint(0, 4), randint(0, 4)
@@ -37,14 +37,14 @@ def player_input():
     """
     Requests and validates input from player.
     """
-    row = input("Please enter ship row 1-5: ")
+    row = input("Please input ship row 1-5: ")
     while row not in "12345":
-        print("Please enter valid row!")
-        row = input("Please enter ship row 1-5: ")
-    column = input("Please enter ship column A-E: ").upper()
+        print("Please input valid row!")
+        row = input("Please input ship row 1-5: ")
+    column = input("Please input ship column A-E: ").upper()
     while column not in "ABCDE":
-        print("Please enter valid column!")
-        column = input("Please enter ship column A-E: ").upper()
+        print("Please input valid column!")
+        column = input("Please input ship column A-E: ").upper()
     return int(row) - 1, letters_to_numbers[column]
 
 
@@ -69,15 +69,19 @@ def computer_input(PLAYER_BOARD):
         computer_input(PLAYER_BOARD)
     elif PLAYER_BOARD[row][column] == " ":
         PLAYER_BOARD[row][column] = "-"
-        print("Computer MISSED!")    
+        print("Computer MISSED!")
     elif PLAYER_BOARD[row][column] == "X":
         PLAYER_BOARD[row][column] = "*"
         print("Computer HIT!")
-    else: 
+    else:
         print("Computer MISS!")
 
 
 def play_game():
+    """
+    Main game function, prints instructions, tallys turns, checks for
+    repeat guesses, calls other functions and gives user result.
+    """
     turns = 8
     while turns > 0:
         print("Welcome to BATTLESHIPS!")
@@ -88,7 +92,7 @@ def play_game():
         row, column = player_input()
         if GUESS_BOARD[row][column] == "-":
             print("Already guessed that!")
-        elif HIDDEN_BOARD[row][column] == "X":
+        elif COMP_BOARD[row][column] == "X":
             print("HIT!")
             GUESS_BOARD[row][column] = "*"
             turns -= 1
@@ -99,7 +103,7 @@ def play_game():
             turns -= 1
             computer_input(PLAYER_BOARD)
         if count_hits(GUESS_BOARD) == 5:
-            print("Congratulations, YOU WIN!")
+            print("Congrats, YOU WIN!")
             break
         print("You have " + str(turns) + " turns remaining")
         if turns == 0:
@@ -107,6 +111,6 @@ def play_game():
             break
 
 
-make_ships(HIDDEN_BOARD)
+make_ships(COMP_BOARD)
 make_ships(PLAYER_BOARD)
 play_game()
