@@ -11,6 +11,9 @@ letters_to_numbers = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
 
 
 def print_board(board):
+    """
+    Creates game boards.
+    """
     print("  A B C D E")
     print("  ---------")
     row_number = 1
@@ -20,6 +23,9 @@ def print_board(board):
 
 
 def make_ships(board):
+    """
+    Populates boards with ships.
+    """
     for ship in range(5):
         ship_row, ship_column = randint(0, 4), randint(0, 4)
         while board[ship_row][ship_column] == "X":
@@ -28,6 +34,9 @@ def make_ships(board):
 
 
 def player_input():
+    """
+    Requests and validates input from player.
+    """
     row = input("Please enter ship row 1-5:")
     while row not in "12345":
         print("Please enter valid row!")
@@ -40,15 +49,21 @@ def player_input():
 
 
 def count_hits(board):
+    """
+    Counts how many ships have been sunk.
+    """
     count = 0
     for row in board:
         for column in row:
-            if column == "X":
+            if column == "*":
                 count += 1
     return count
 
 
 def computer_input(PLAYER_BOARD):
+    """
+    Generates the computers choice and prints it to the players board.
+    """
     row, column = randint(0, 4), randint(0, 4)
     if PLAYER_BOARD[row][column] == "-":
         computer_input(PLAYER_BOARD)
@@ -60,3 +75,4 @@ def computer_input(PLAYER_BOARD):
         print("Computer HIT!")
     else: 
         print("Computer MISS!")
+        
