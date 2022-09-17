@@ -40,6 +40,23 @@ def player_input():
 
 
 def count_hits(board):
+    count = 0
+    for row in board:
+        for column in row:
+            if column == "X":
+                count += 1
+    return count
 
 
-def computer_input()
+def computer_input(PLAYER_BOARD):
+    row, column = randint(0, 4), randint(0, 4)
+    if PLAYER_BOARD[row][column] == "-":
+        computer_input(PLAYER_BOARD)
+    elif PLAYER_BOARD[row][column] == " ":
+        PLAYER_BOARD[row][column] = "-"
+        print("Computer MISS!")    
+    elif PLAYER_BOARD[row][column] == "X":
+        PLAYER_BOARD[row][column] = "*"
+        print("Computer HIT!")
+    else: 
+        print("Computer MISS!")
