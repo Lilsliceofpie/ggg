@@ -37,14 +37,14 @@ def player_input():
     """
     Requests and validates input from player.
     """
-    row = input("Please enter ship row 1-5:")
+    row = input("Please enter ship row 1-5: ")
     while row not in "12345":
         print("Please enter valid row!")
-        row = input("Please enter ship row 1-5:")
-    column = input("Please enter ship column A-E:").upper()
+        row = input("Please enter ship row 1-5: ")
+    column = input("Please enter ship column A-E: ").upper()
     while column not in "ABCDE":
         print("Please enter valid column!")
-        column = input("Please enter ship column A-E:").upper()
+        column = input("Please enter ship column A-E: ").upper()
     return int(row) - 1, letters_to_numbers[column]
 
 
@@ -69,10 +69,44 @@ def computer_input(PLAYER_BOARD):
         computer_input(PLAYER_BOARD)
     elif PLAYER_BOARD[row][column] == " ":
         PLAYER_BOARD[row][column] = "-"
-        print("Computer MISS!")    
+        print("Computer MISSED!")    
     elif PLAYER_BOARD[row][column] == "X":
         PLAYER_BOARD[row][column] = "*"
         print("Computer HIT!")
     else: 
         print("Computer MISS!")
-        
+
+
+def play_game():
+    turns = 8
+    while turns > 0:
+        print("Welcome to BATTLESHIPS!")
+        print("Players Board")
+        print_board(PLAYER_BOARD)
+        print("Computers Board")
+        print_board(GUESS_BOARD)
+        row, column = player_input()
+        if GUESS_BOARD[row][column] == "-":
+            print("Already guessed that!")
+        elif HIDDEN_BOARD[row][column] == "X":
+            print("HIT!")
+            GUESS_BOARD[row][column] = "*"
+            turns -= 1
+            computer_input(PLAYER_BOARD)
+        else:
+            print("MISS!")
+            GUESS_BOARD[row][column] = "-"
+            turns -= 1
+            computer_input(PLAYER_BOARD)
+        if count_hits(GUESS_BOARD) == 5:
+            print("Congratulations, YOU WIN!")
+            break
+        print("You have " + str(turns) + " turns remaining")
+        if turns == 0:
+            print("GAME OVER!")
+            break
+
+
+make_ships(HIDDEN_BOARD)
+make_ships(PLAYER_BOARD)
+play_game()
